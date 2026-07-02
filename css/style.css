@@ -1,0 +1,458 @@
+/* ===========================
+   RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f7fff6;
+    color:#333;
+    overflow-x:hidden;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 8%;
+    background:#2E7D32;
+    color:white;
+    z-index:999;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:700;
+}
+
+nav{
+    display:flex;
+    gap:25px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#FFD54F;
+}
+
+/* ===========================
+   HERO
+=========================== */
+
+.hero{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:30px;
+    color:white;
+
+    background:
+    linear-gradient(rgba(46,125,50,.80),rgba(76,175,80,.80)),
+    url("https://images.unsplash.com/photo-1497436072909-f5e4be6f7c4f?auto=format&fit=crop&w=1500&q=80");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.hero h1{
+    font-size:60px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:20px;
+    line-height:35px;
+    margin-bottom:35px;
+}
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.btn{
+    display:inline-block;
+    padding:15px 35px;
+    background:white;
+    color:#2E7D32;
+    text-decoration:none;
+    border-radius:40px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#FFD54F;
+    transform:translateY(-3px);
+}
+
+/* ===========================
+   SECTION
+=========================== */
+
+section{
+    padding:90px 10%;
+}
+
+h2{
+    text-align:center;
+    color:#2E7D32;
+    font-size:36px;
+    margin-bottom:45px;
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.card-container{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:30px;
+
+}
+
+.card{
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.icon{
+
+    font-size:45px;
+
+    margin-bottom:20px;
+
+}
+
+.card h3{
+
+    margin-bottom:15px;
+
+    color:#2E7D32;
+
+}
+
+.card p{
+
+    line-height:28px;
+
+    margin-bottom:18px;
+
+}
+
+.card a{
+
+    color:#2E7D32;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+/* ===========================
+   TENTANG
+=========================== */
+
+.tentang{
+
+    background:#E8F5E9;
+
+    border-radius:20px;
+
+}
+
+/* ===========================
+   MAP
+=========================== */
+
+iframe{
+
+    width:100%;
+
+    height:450px;
+
+    border:none;
+
+    border-radius:20px;
+
+    margin-top:25px;
+
+}
+
+.btn-group{
+
+    text-align:center;
+
+    margin-top:30px;
+
+}
+
+/* ===========================
+   IMAGE
+=========================== */
+
+img{
+
+    max-width:100%;
+
+    border-radius:15px;
+
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer{
+
+    background:#2E7D32;
+
+    color:white;
+
+    text-align:center;
+
+    padding:30px;
+
+    margin-top:60px;
+
+}
+
+/* ===================================================
+                RESPONSIVE TABLET
+=================================================== */
+
+@media(max-width:992px){
+
+header{
+
+    padding:18px 5%;
+
+}
+
+.hero h1{
+
+    font-size:48px;
+
+}
+
+.hero p{
+
+    font-size:18px;
+
+}
+
+section{
+
+    padding:80px 7%;
+
+}
+
+}
+
+/* ===================================================
+                    RESPONSIVE HP
+=================================================== */
+
+@media(max-width:768px){
+
+header{
+
+    flex-direction:column;
+
+    padding:15px;
+
+}
+
+.logo{
+
+    margin-bottom:15px;
+
+    font-size:22px;
+
+}
+
+nav{
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:12px;
+
+}
+
+nav a{
+
+    font-size:14px;
+
+}
+
+.hero{
+
+    height:90vh;
+
+    padding:20px;
+
+}
+
+.hero h1{
+
+    font-size:36px;
+
+}
+
+.hero p{
+
+    font-size:16px;
+
+    line-height:30px;
+
+}
+
+.btn{
+
+    padding:12px 25px;
+
+    font-size:15px;
+
+}
+
+section{
+
+    padding:70px 20px;
+
+}
+
+h2{
+
+    font-size:28px;
+
+}
+
+.card-container{
+
+    grid-template-columns:1fr;
+
+}
+
+.card{
+
+    padding:25px;
+
+}
+
+iframe{
+
+    height:300px;
+
+}
+
+footer{
+
+    font-size:14px;
+
+}
+
+}
+
+/* ===================================================
+                RESPONSIVE HP KECIL
+=================================================== */
+
+@media(max-width:480px){
+
+.hero{
+
+    height:85vh;
+
+}
+
+.hero h1{
+
+    font-size:30px;
+
+}
+
+.hero p{
+
+    font-size:15px;
+
+}
+
+.logo{
+
+    font-size:20px;
+
+}
+
+nav{
+
+    gap:8px;
+
+}
+
+nav a{
+
+    font-size:13px;
+
+}
+
+.btn{
+
+    width:100%;
+
+    max-width:250px;
+
+}
+
+iframe{
+
+    height:250px;
+
+}
+
+}
