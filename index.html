@@ -131,16 +131,23 @@ nav#siteNav { display: flex; gap: 22px; flex-shrink: 0; }
 
 .hero {
   position: relative;
-  min-height: 100svh;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 84px 20px 40px;
+  padding: 48px 20px 36px;
   background: var(--forest);
   overflow: hidden;
   text-align: center;
+}
+
+@media (min-width: 900px) {
+  .hero {
+    min-height: 100svh;
+    min-height: 100vh;
+    padding: 84px 20px 40px;
+  }
+  .stat-strip { margin-top: 40px; }
 }
 
 .blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.5; }
@@ -210,7 +217,7 @@ nav#siteNav { display: flex; gap: 22px; flex-shrink: 0; }
 .stat-strip {
   position: relative;
   z-index: 2;
-  margin-top: 40px;
+  margin-top: 28px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
@@ -829,7 +836,7 @@ footer {
 <section id="galeri" class="section-block">
   <p class="section-kicker reveal">📸 Dokumentasi</p>
   <h2 class="reveal">Galeri Kegiatan KKN</h2>
-
+ 
   <div class="gallery-grid reveal" id="galleryGrid"></div>
   <p class="gallery-empty" id="galleryEmpty" style="display:none;">Belum ada foto yang ke-upload. Yuk mulai tambahin dokumentasi kegiatan kamu!</p>
 </section>
