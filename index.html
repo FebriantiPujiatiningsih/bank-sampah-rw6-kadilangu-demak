@@ -94,15 +94,16 @@ img { max-width: 100%; display: block; }
 
 .logo-text { white-space: nowrap; }
 
-nav#siteNav { display: flex; gap: 22px; flex-shrink: 0; }
+nav#siteNav { display: flex; gap: 16px; flex-shrink: 0; }
 
 .nav-link {
   color: rgba(255,255,255,0.75);
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 500;
   padding: 4px 0;
   position: relative;
   transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
 .nav-link::after {
@@ -187,6 +188,14 @@ nav#siteNav { display: flex; gap: 22px; flex-shrink: 0; }
   margin-top: 14px;
   color: rgba(255,255,255,0.72);
   font-size: 0.92rem;
+}
+
+.hero-tagline {
+  margin-top: 10px;
+  color: var(--lime);
+  font-style: italic;
+  font-size: 0.88rem;
+  font-weight: 500;
 }
 
 .hero-actions {
@@ -301,6 +310,10 @@ nav#siteNav { display: flex; gap: 22px; flex-shrink: 0; }
 .card:nth-child(2) { --accent: var(--gold); }
 .card:nth-child(3) { --accent: var(--coral); }
 .card:nth-child(4) { --accent: var(--lime); }
+.card:nth-child(5) { --accent: var(--leaf); }
+.card:nth-child(6) { --accent: var(--gold); }
+.card:nth-child(7) { --accent: var(--coral); }
+.card:nth-child(8) { --accent: var(--lime); }
 
 .stamp {
   width: 44px; height: 44px;
@@ -404,7 +417,7 @@ nav#siteNav { display: flex; gap: 22px; flex-shrink: 0; }
 
 /* ================= BUDAYA / POSTER ================= */
 
-.poster-wrap { display: flex; flex-direction: column; align-items: center; }
+.poster-wrap { display: flex; flex-direction: column; align-items: center; margin-bottom: 30px; }
 
 .poster-frame {
   position: relative;
@@ -555,13 +568,22 @@ nav#siteNav { display: flex; gap: 22px; flex-shrink: 0; }
 
 
 
+.qr-pair {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.qr-item { display: flex; flex-direction: column; align-items: center; }
+.qr-label { margin-top: 12px; font-size: 0.85rem; font-weight: 600; color: var(--ink-soft); }
+
 .qr-frame {
   display: inline-block;
   background: #fff;
   padding: 18px;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  margin-bottom: 20px;
 }
 
 /* ================= KONTAK ================= */
@@ -589,9 +611,102 @@ footer {
   font-family: var(--font-mono);
 }
 
-/* ================= RESPONSIVE ================= */
+.footer-tagline {
+  font-family: var(--font-display);
+  color: var(--lime);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
 
-@media (max-width: 820px) {
+.footer-sub {
+  color: rgba(252,249,240,0.7);
+  font-size: 0.8rem;
+  margin-bottom: 14px;
+  font-family: var(--font-body);
+}
+
+/* ================= JENIS SAMPAH (tabs) ================= */
+
+.waste-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+  margin-bottom: 28px;
+}
+
+.waste-tab {
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1.5px solid var(--ink-soft);
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.waste-tab[data-tab="organik"].active { background: var(--leaf); border-color: var(--leaf); color: #fff; }
+.waste-tab[data-tab="anorganik"].active { background: var(--gold); border-color: var(--gold); color: var(--forest-dark); }
+
+.waste-panel {
+  display: none;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  text-align: left;
+}
+.waste-panel.active { display: grid; }
+
+.waste-item {
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--accent, var(--leaf));
+}
+.waste-item .waste-icon { font-size: 1.4rem; margin-bottom: 6px; display: block; }
+.waste-item h4 { font-family: var(--font-body); font-weight: 700; font-size: 0.9rem; color: var(--ink); margin-bottom: 3px; }
+.waste-item p { font-size: 0.78rem; color: var(--ink-soft); }
+
+.waste-tip {
+  margin-top: 20px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: rgba(47,158,110,0.08);
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+  text-align: left;
+}
+
+
+/* ================= FLOATING CHAT BUTTON ================= */
+
+.chat-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 60;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--leaf);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 24px rgba(11,61,46,0.35);
+  transition: transform 0.2s ease;
+}
+.chat-float:hover { transform: scale(1.08); }
+.chat-float svg { width: 26px; height: 26px; }
+
+
+
+@media (max-width: 1050px) {
   nav#siteNav {
     position: absolute; top: 100%; left: 0; right: 0;
     background: var(--forest);
@@ -637,12 +752,13 @@ footer {
   <nav id="siteNav">
     <a href="#beranda" class="nav-link">Beranda</a>
     <a href="#lokasi" class="nav-link">Lokasi</a>
-    <a href="#panduan" class="nav-link">Panduan</a>
+    <a href="#panduan" class="nav-link">SOP</a>
+    <a href="#pemilahan" class="nav-link">Pemilahan</a>
     <a href="#perawatan" class="nav-link">Perawatan</a>
     <a href="#budaya" class="nav-link">Budaya</a>
+    <a href="#dokumentasi" class="nav-link">Dokumentasi</a>
     <a href="#galeri" class="nav-link">Galeri</a>
-    <a href="#jadwal" class="nav-link">Jadwal</a>
-    <a href="#kontak" class="nav-link">Kontak</a>
+    <a href="#qr" class="nav-link">QR Code</a>
   </nav>
 </header>
 
@@ -656,10 +772,11 @@ footer {
     <span class="hero-chip">🌱 Media Informasi Digital</span>
     <h1 class="hero-title">Bank Sampah<br><span>RW 6</span></h1>
     <p class="hero-sub">Kelurahan Kadilangu &middot; Kabupaten Demak</p>
+    <p class="hero-tagline">"Kelola Sampah, Jaga Lingkungan, Ciptakan Manfaat"</p>
 
     <div class="hero-actions">
       <a href="#lokasi" class="btn btn-solid">📍 Lihat Lokasi</a>
-      <a href="#panduan" class="btn btn-ghost">Lihat Panduan</a>
+      <a href="#panduan" class="btn btn-ghost">Lihat SOP</a>
     </div>
   </div>
 
@@ -672,7 +789,7 @@ footer {
 <section class="fitur">
   <p class="section-kicker reveal">Daftar Isi</p>
   <h2 class="reveal">Informasi Bank Sampah</h2>
-  <p class="section-lede reveal">Empat hal penting seputar Bank Sampah RW 6 — semua ada di sini.</p>
+  <p class="section-lede reveal">Tujuh hal penting seputar Bank Sampah RW 6 — semua ada di sini.</p>
 
   <div class="card-container">
     <a href="#lokasi" class="card reveal">
@@ -682,9 +799,15 @@ footer {
       <span class="card-link">Selengkapnya →</span>
     </a>
     <a href="#panduan" class="card reveal">
-      <div class="stamp">♻️</div>
-      <h3>Tahapan Pembuatan</h3>
-      <p>Panduan pembentukan dan pengelolaan Bank Sampah.</p>
+      <div class="stamp">📋</div>
+      <h3>SOP Bank Sampah</h3>
+      <p>Prosedur penggunaan Bank Sampah RW 6 langkah demi langkah.</p>
+      <span class="card-link">Selengkapnya →</span>
+    </a>
+    <a href="#pemilahan" class="card reveal">
+      <div class="stamp">🗂️</div>
+      <h3>Pemilahan Sampah</h3>
+      <p>Kenali kategori organik dan anorganik.</p>
       <span class="card-link">Selengkapnya →</span>
     </a>
     <a href="#perawatan" class="card reveal">
@@ -697,6 +820,18 @@ footer {
       <div class="stamp">🌿</div>
       <h3>Budaya Peduli Sampah</h3>
       <p>Poster edukasi budaya menjaga lingkungan.</p>
+      <span class="card-link">Selengkapnya →</span>
+    </a>
+    <a href="#dokumentasi" class="card reveal">
+      <div class="stamp">🏗️</div>
+      <h3>Dokumentasi Pembuatan</h3>
+      <p>Foto proses pembuatan Bank Sampah RW 6.</p>
+      <span class="card-link">Selengkapnya →</span>
+    </a>
+    <a href="#galeri" class="card reveal">
+      <div class="stamp">📸</div>
+      <h3>Galeri Kegiatan</h3>
+      <p>Dokumentasi kegiatan KKN selama di Kadilangu.</p>
       <span class="card-link">Selengkapnya →</span>
     </a>
   </div>
@@ -723,6 +858,7 @@ footer {
 <section id="lokasi" class="section-block">
   <p class="section-kicker reveal">📍 Lokasi</p>
   <h2 class="reveal">Lokasi Bank Sampah RW 6</h2>
+  <p class="section-lede reveal">Lokasi Bank Sampah RW 6 Kelurahan Kadilangu, Kabupaten Demak.</p>
 
   <div class="map-frame reveal">
     <iframe src="https://www.google.com/maps?q=-6.9137647,110.6589204&hl=id&z=17&output=embed" loading="lazy"></iframe>
@@ -737,32 +873,67 @@ footer {
 
 <!-- ================= PANDUAN ================= -->
 <section id="panduan" class="section-block">
-  <p class="section-kicker reveal">♻️ Panduan</p>
-  <h2 class="reveal">Tahapan Pembuatan Bank Sampah</h2>
-  <p class="section-lede reveal">Tiga langkah utama membangun Bank Sampah dari nol hingga berjalan di lingkungan RW.</p>
+  <p class="section-kicker reveal">📋 SOP</p>
+  <h2 class="reveal">SOP Bank Sampah RW 6</h2>
+  <p class="section-lede reveal">Langkah-langkah menggunakan Bank Sampah RW 6 untuk warga sekitar.</p>
 
   <div class="timeline">
     <div class="timeline-item reveal">
       <div class="timeline-num">01</div>
       <div class="timeline-body">
-        <h3>Pembentukan Pengurus</h3>
-        <p>Membentuk struktur pengurus Bank Sampah bersama warga.</p>
+        <h3>Pilah dari Rumah</h3>
+        <p>Pisahkan sampah organik dan anorganik sebelum dibawa ke Bank Sampah.</p>
       </div>
     </div>
     <div class="timeline-item reveal">
       <div class="timeline-num">02</div>
       <div class="timeline-body">
-        <h3>Penyediaan Sarana</h3>
-        <p>Menyiapkan lokasi, tempat sampah, banner, dan perlengkapan.</p>
+        <h3>Bawa ke Lokasi</h3>
+        <p>Antarkan sampah ke titik Bank Sampah RW 6 sesuai jam operasional.</p>
       </div>
     </div>
     <div class="timeline-item reveal">
       <div class="timeline-num">03</div>
       <div class="timeline-body">
-        <h3>Sosialisasi</h3>
-        <p>Memberikan edukasi kepada masyarakat mengenai pengelolaan sampah.</p>
+        <h3>Buang Sesuai Kategori</h3>
+        <p>Taruh di wadah organik atau anorganik yang sudah disediakan.</p>
       </div>
     </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-num">04</div>
+      <div class="timeline-body">
+        <h3>Jaga Kebersihan</h3>
+        <p>Pastikan area tetap rapi dan bersih setelah membuang sampah.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="line-divider"></div>
+
+<!-- ================= JENIS SAMPAH ================= -->
+<section id="pemilahan" class="section-block">
+  <p class="section-kicker reveal">🗂️ Fitur Khusus RW 6</p>
+  <h2 class="reveal">Pemilahan Sampah</h2>
+  <p class="section-lede reveal">Kenali dulu jenisnya sebelum dipilah — biar pengelolaan sampah di RW 6 lebih rapi.</p>
+
+  <div class="waste-tabs reveal">
+    <button class="waste-tab active" data-tab="organik">🍃 Organik</button>
+    <button class="waste-tab" data-tab="anorganik">📦 Anorganik</button>
+  </div>
+
+  <div class="waste-panel active" data-panel="organik">
+    <div class="waste-item" style="--accent: var(--leaf);"><span class="waste-icon">🍚</span><h4>Sisa Makanan</h4><p>Bisa dikompos jadi pupuk.</p></div>
+    <div class="waste-item" style="--accent: var(--leaf);"><span class="waste-icon">🍂</span><h4>Daun & Ranting</h4><p>Sampah kebun, mudah terurai.</p></div>
+    <div class="waste-item" style="--accent: var(--leaf);"><span class="waste-icon">🍌</span><h4>Kulit Buah/Sayur</h4><p>Cocok buat kompos rumahan.</p></div>
+    <div class="waste-item" style="--accent: var(--leaf);"><span class="waste-icon">☕</span><h4>Ampas Kopi/Teh</h4><p>Bisa jadi pupuk atau penyerap bau.</p></div>
+  </div>
+
+  <div class="waste-panel" data-panel="anorganik">
+    <div class="waste-item" style="--accent: var(--gold);"><span class="waste-icon">🧴</span><h4>Botol Plastik</h4><p>Dipilah dulu sebelum didaur ulang.</p></div>
+    <div class="waste-item" style="--accent: var(--gold);"><span class="waste-icon">📦</span><h4>Kertas & Kardus</h4><p>Dilipat rapi biar hemat tempat.</p></div>
+    <div class="waste-item" style="--accent: var(--gold);"><span class="waste-icon">🥫</span><h4>Kaleng & Logam</h4><p>Dipisah dari sampah basah.</p></div>
+    <div class="waste-item" style="--accent: var(--gold);"><span class="waste-icon">🍾</span><h4>Botol & Pecahan Kaca</h4><p>Bungkus dulu biar aman dibawa.</p></div>
   </div>
 </section>
 
@@ -773,6 +944,14 @@ footer {
   <p class="section-kicker reveal">🧹 Perawatan</p>
   <h2 class="reveal">Tata Cara Perawatan</h2>
   <p class="section-lede reveal">Rutinitas sederhana supaya Bank Sampah tetap rapi dan nyaman digunakan warga.</p>
+
+  <div class="poster-wrap">
+    <div class="poster-frame reveal">
+      <span class="tape tape-left"></span>
+      <span class="tape tape-right"></span>
+      <img src="assets/poster-perawatan.jpeg" alt="Poster Perawatan Bank Sampah RW 6" width="320">
+    </div>
+  </div>
 
   <div class="checklist">
     <div class="check-item reveal"><span class="check-mark">✓</span><p>Membersihkan area Bank Sampah secara rutin.</p></div>
@@ -792,11 +971,11 @@ footer {
     <div class="poster-frame reveal">
       <span class="tape tape-left"></span>
       <span class="tape tape-right"></span>
-      <img src="assets/poster.png" alt="Poster edukasi peduli sampah" width="320"
+      <img src="assets/poster-budaya.png" alt="Poster Budaya Bersih Mulai dari Kita" width="320"
            onerror="this.closest('.poster-frame').classList.add('poster-missing')">
       <div class="poster-fallback">
         <span>🖼️</span>
-        <p>Taruh file poster kamu di <code>assets/poster.png</code></p>
+        <p>Taruh file poster kamu di <code>assets/poster-budaya.jpg</code></p>
       </div>
     </div>
     <p class="poster-caption">Poster edukasi mengenai pentingnya menjaga kebersihan lingkungan dan membuang sampah pada tempatnya.</p>
@@ -805,11 +984,24 @@ footer {
 
 <div class="line-divider"></div>
 
+<!-- ================= DOKUMENTASI PEMBUATAN ================= -->
+<section id="dokumentasi" class="section-block">
+  <p class="section-kicker reveal">🏗️ Proses</p>
+  <h2 class="reveal">Dokumentasi Pembuatan Bank Sampah</h2>
+  <p class="section-lede reveal">Rekam jejak proses pembentukan Bank Sampah RW 6 dari awal sampai berjalan.</p>
+
+  <div class="gallery-grid reveal" id="dokGrid"></div>
+  <p class="gallery-empty" id="dokEmpty" style="display:none;">Foto dokumentasi pembuatan belum ke-upload.</p>
+  <p class="gallery-note">Taruh foto di <code>assets/dokumentasi/</code> dengan nama <code>dok-1</code> sampai <code>dok-6</code> (format <code>.jpg</code>, <code>.jpeg</code>, atau <code>.png</code>).</p>
+</section>
+
+<div class="line-divider"></div>
+
 <!-- ================= GALERI ================= -->
 <section id="galeri" class="section-block">
   <p class="section-kicker reveal">📸 Dokumentasi</p>
   <h2 class="reveal">Galeri Kegiatan KKN</h2>
-  
+
   <div class="gallery-grid reveal" id="galleryGrid"></div>
   <p class="gallery-empty" id="galleryEmpty" style="display:none;">Belum ada foto yang ke-upload. Yuk mulai tambahin dokumentasi kegiatan kamu!</p>
 </section>
@@ -823,48 +1015,39 @@ footer {
 
 <div class="line-divider"></div>
 
-<!-- ================= JADWAL ================= -->
-<section id="jadwal" class="section-block">
-  <p class="section-kicker reveal">🕘 Jadwal</p>
-  <h2 class="reveal">Jadwal Operasional</h2>
-
-  <div class="card-container">
-    <div class="card card-static reveal" style="--accent: var(--leaf);"><div class="stamp" style="margin:0 auto 14px;">📅</div><h3>Hari Operasional</h3><p>Senin – Sabtu</p></div>
-    <div class="card card-static reveal" style="--accent: var(--gold);"><div class="stamp" style="margin:0 auto 14px;">⏰</div><h3>Jam Pelayanan</h3><p>09.00 – 16.00 WIB</p></div>
-    <div class="card card-static reveal" style="--accent: var(--coral);"><div class="stamp" style="margin:0 auto 14px;">📍</div><h3>Lokasi</h3><p>RW 6 Kelurahan Kadilangu, Kabupaten Demak</p></div>
-  </div>
-</section>
-
-<div class="line-divider"></div>
-
 <!-- ================= QR ================= -->
-<section class="section-block qr-section">
+<section id="qr" class="section-block qr-section">
   <p class="section-kicker reveal">📱 Akses Cepat</p>
-  <h2 class="reveal">Scan QR Code Lokasi</h2>
+  <h2 class="reveal">Scan QR Code</h2>
+  <p class="section-lede reveal">Scan buat buka website atau langsung menuju lokasi Bank Sampah RW 6.</p>
 
-  <div class="qr-frame reveal">
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://maps.app.goo.gl/TM4vhZ2tk58HCFSt7" width="190" alt="QR Code Lokasi Bank Sampah RW 6">
-  </div>
-  <p class="section-lede">Scan QR Code untuk membuka lokasi Bank Sampah RW 6.</p>
-</section>
-
-<div class="line-divider"></div>
-
-<!-- ================= KONTAK ================= -->
-<section id="kontak" class="section-block kontak">
-  <p class="section-kicker reveal">☎️ Hubungi Kami</p>
-  <h2 class="reveal">Kontak</h2>
-
-  <div class="kontak-card reveal">
-    <h3>Bank Sampah RW 6</h3>
-    <p>📍 Kelurahan Kadilangu, Kabupaten Demak</p>
-    <p>Silakan hubungi Pengurus RW 6 untuk informasi lebih lanjut.</p>
+  <div class="qr-pair">
+    <div class="qr-item reveal">
+      <div class="qr-frame">
+        <!-- Ganti URL di bawah dengan link website kamu yang sudah dideploy (misal dari Netlify) -->
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://banksampahrw6kadilangu.netlify.app" width="170" alt="QR Code Website Bank Sampah RW 6">
+      </div>
+      <p class="qr-label">Website Bank Sampah</p>
+    </div>
+    <div class="qr-item reveal">
+      <div class="qr-frame">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://maps.app.goo.gl/TM4vhZ2tk58HCFSt7" width="170" alt="QR Code Lokasi Bank Sampah RW 6">
+      </div>
+      <p class="qr-label">Lokasi Bank Sampah</p>
+    </div>
   </div>
 </section>
 
 <footer>
+  <p class="footer-tagline">♻️ Yuk, Kelola Sampah dari Rumah!</p>
+  <p class="footer-sub">Sampah Terpilah, Lingkungan Bersih, Manfaat Bertambah.</p>
   <p>© 2026 Mahasiswa KKN-T IDBU Kadilangu Kelompok 3</p>
 </footer>
+
+<!-- Ganti nomor di href berikut dengan nomor WhatsApp pengurus RW 6 -->
+<a class="chat-float" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20soal%20Bank%20Sampah%20RW%206" target="_blank" rel="noopener" aria-label="Chat Pengurus via WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3C7 3 3 7 3 12c0 1.6.4 3.1 1.2 4.4L3 21l4.7-1.2A9 9 0 1 0 12 3z" stroke="white" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 9.5c0 3.5 2.5 6 6 6" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg>
+</a>
 
 <script>
 // Toggle menu mobile
@@ -895,29 +1078,24 @@ const navObserver = new IntersectionObserver((entries) => {
 
 sections.forEach(section => navObserver.observe(section));
 
-// ================= GALERI ================= //
-// Otomatis: cukup taruh file foto di assets/galeri/ dengan nama foto-1.jpg, foto-2.jpg, dst.
-// Nggak perlu edit kode ini lagi tiap nambah foto — situs otomatis nyari sampai nomor di bawah.
-// Kalau fotonya lebih dari 80, tinggal naikkan angka MAX_PHOTOS ini.
-const MAX_PHOTOS = 80;
+// ================= TAB JENIS SAMPAH ================= //
+const wasteTabs = document.querySelectorAll('.waste-tab');
+const wastePanels = document.querySelectorAll('.waste-panel');
 
-// (opsional) kasih caption khusus untuk nomor foto tertentu, sisanya pakai caption default
-const captionOverrides = {
-  1: 'Sosialisasi antibullying & paspor negara',
-  2: 'Dokumentasi kegiatan sosmas',
-  3: 'Sosialisasi di Posyandu RW 6',
-  4: 'Sosialisasi belanja ramah lingkungan',
-};
+wasteTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    wasteTabs.forEach(t => t.classList.remove('active'));
+    wastePanels.forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelector(`.waste-panel[data-panel="${tab.dataset.tab}"]`).classList.add('active');
+  });
+});
 
-const galleryGrid = document.getElementById('galleryGrid');
-const galleryEmpty = document.getElementById('galleryEmpty');
+// ================= GALERI (fungsi reusable) ================= //
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightboxImg');
 const lightboxCap = document.getElementById('lightboxCap');
 const lightboxClose = document.getElementById('lightboxClose');
-
-let foundCount = 0;
-let checkedCount = 0;
 
 function openLightbox(src, caption) {
   lightboxImg.src = src;
@@ -925,25 +1103,36 @@ function openLightbox(src, caption) {
   lightbox.classList.add('open');
 }
 
-function checkGalleryDone() {
-  checkedCount++;
-  if (checkedCount === MAX_PHOTOS && galleryEmpty) {
-    galleryEmpty.style.display = foundCount === 0 ? 'block' : 'none';
-  }
+function closeLightbox() { lightbox.classList.remove('open'); }
+if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+if (lightbox) {
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
 }
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 
-if (galleryGrid) {
-  for (let i = 1; i <= MAX_PHOTOS; i++) {
-    const caption = captionOverrides[i] || `Dokumentasi kegiatan ${i}`;
+function initAutoGallery({ gridId, emptyId, folder, prefix, maxPhotos, captions = {}, defaultCaption }) {
+  const grid = document.getElementById(gridId);
+  const emptyEl = document.getElementById(emptyId);
+  if (!grid) return;
+
+  let foundCount = 0;
+  let checkedCount = 0;
+
+  function checkDone() {
+    checkedCount++;
+    if (checkedCount === maxPhotos && emptyEl) {
+      emptyEl.style.display = foundCount === 0 ? 'block' : 'none';
+    }
+  }
+
+  for (let i = 1; i <= maxPhotos; i++) {
+    const caption = captions[i] || (defaultCaption ? `${defaultCaption} ${i}` : `Foto ${i}`);
     const extensions = ['jpg', 'jpeg', 'png'];
     let extIndex = 0;
 
     function tryNextExt() {
-      if (extIndex >= extensions.length) {
-        checkGalleryDone();
-        return;
-      }
-      const src = `assets/galeri/foto-${i}.${extensions[extIndex]}`;
+      if (extIndex >= extensions.length) { checkDone(); return; }
+      const src = `assets/${folder}/${prefix}-${i}.${extensions[extIndex]}`;
       const probe = new Image();
       probe.onload = () => {
         foundCount++;
@@ -964,13 +1153,10 @@ if (galleryGrid) {
         tile.appendChild(cap);
         tile.addEventListener('click', () => openLightbox(src, caption));
 
-        galleryGrid.appendChild(tile);
-        checkGalleryDone();
+        grid.appendChild(tile);
+        checkDone();
       };
-      probe.onerror = () => {
-        extIndex++;
-        tryNextExt();
-      };
+      probe.onerror = () => { extIndex++; tryNextExt(); };
       probe.src = src;
     }
 
@@ -978,12 +1164,34 @@ if (galleryGrid) {
   }
 }
 
-function closeLightbox() { lightbox.classList.remove('open'); }
-if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-if (lightbox) {
-  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-}
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+// Galeri Kegiatan KKN — otomatis sampai foto-80
+initAutoGallery({
+  gridId: 'galleryGrid',
+  emptyId: 'galleryEmpty',
+  folder: 'galeri',
+  prefix: 'foto',
+  maxPhotos: 80,
+  defaultCaption: 'Dokumentasi kegiatan',
+  captions: {
+    1: '“Kenali dan Hentikan Bullying: Sosialisasi Anti-Bullying”',
+    2: '“Edukasi Bahasa dan Budaya Negara-negara”',
+    3: '“Ceria Makan: Cerdas Mengatasi Anak Susah Makan”',
+    4: '“Belanja Bijak Tanpa Plastik: Gerakan Belanja Ramah Lingkungan”',
+    5: '“Pintar Keuangan, Cerdas Masa Depan”',
+    6: '“Rezekiku Amanah, Yuk Gunakan Dengan Bijak”',  
+    7: '“Workshop Mewarnai Rumah Impian”',
+  },
+});
+
+// Dokumentasi Pembuatan Bank Sampah — grid tetap 6 foto
+initAutoGallery({
+  gridId: 'dokGrid',
+  emptyId: 'dokEmpty',
+  folder: 'dokumentasi',
+  prefix: 'dok',
+  maxPhotos: 6,
+  defaultCaption: 'Proses pembuatan',
+});
 
 const revealEls = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver((entries) => {
