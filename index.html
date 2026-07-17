@@ -566,24 +566,39 @@ nav#siteNav { display: flex; gap: 16px; flex-shrink: 0; }
 }
 .lightbox-close:hover { background: rgba(255,255,255,0.22); }
 
-
-
-.qr-pair {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
-  margin-top: 10px;
+.qr-frame{
+    width:220px;
+    height:220px;
+    background:#fff;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+    padding:15px;
 }
-.qr-item { display: flex; flex-direction: column; align-items: center; }
-.qr-label { margin-top: 12px; font-size: 0.85rem; font-weight: 600; color: var(--ink-soft); }
 
-.qr-frame {
-  display: inline-block;
-  background: #fff;
-  padding: 18px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+.qr-image{
+    width:180px;
+    height:180px;
+    object-fit:contain;
+}
+
+.qr-pair{
+    display:flex;
+    justify-content:center;
+    gap:50px;
+    flex-wrap:wrap;
+}
+
+.qr-item{
+    text-align:center;
+}
+
+.qr-label{
+    margin-top:15px;
+    font-weight:600;
+    color:#12492f;
 }
 
 /* ================= KONTAK ================= */
@@ -757,7 +772,6 @@ footer {
     <a href="#perawatan" class="nav-link">Perawatan</a>
     <a href="#budaya" class="nav-link">Budaya</a>
     <a href="#dokumentasi" class="nav-link">Dokumentasi</a>
-    <a href="#galeri" class="nav-link">Galeri</a>
     <a href="#qr" class="nav-link">QR Code</a>
   </nav>
 </header>
@@ -826,12 +840,6 @@ footer {
       <div class="stamp">🏗️</div>
       <h3>Dokumentasi Pembuatan</h3>
       <p>Foto proses pembuatan Bank Sampah RW 6.</p>
-      <span class="card-link">Selengkapnya →</span>
-    </a>
-    <a href="#galeri" class="card reveal">
-      <div class="stamp">📸</div>
-      <h3>Galeri Kegiatan</h3>
-      <p>Dokumentasi kegiatan KKN selama di Kadilangu.</p>
       <span class="card-link">Selengkapnya →</span>
     </a>
   </div>
@@ -949,7 +957,7 @@ footer {
     <div class="poster-frame reveal">
       <span class="tape tape-left"></span>
       <span class="tape tape-right"></span>
-      <img src="assets/poster-perawatan.jpeg" alt="Poster Perawatan Bank Sampah RW 6" width="320">
+      <img src="assets/poster-perawatan.png" alt="Poster Perawatan Bank Sampah RW 6" width="320">
     </div>
   </div>
 
@@ -992,26 +1000,7 @@ footer {
 
   <div class="gallery-grid reveal" id="dokGrid"></div>
   <p class="gallery-empty" id="dokEmpty" style="display:none;">Foto dokumentasi pembuatan belum ke-upload.</p>
-  <p class="gallery-note">Taruh foto di <code>assets/dokumentasi/</code> dengan nama <code>dok-1</code> sampai <code>dok-6</code> (format <code>.jpg</code>, <code>.jpeg</code>, atau <code>.png</code>).</p>
 </section>
-
-<div class="line-divider"></div>
-
-<!-- ================= GALERI ================= -->
-<section id="galeri" class="section-block">
-  <p class="section-kicker reveal">📸 Dokumentasi</p>
-  <h2 class="reveal">Galeri Kegiatan KKN</h2>
-
-  <div class="gallery-grid reveal" id="galleryGrid"></div>
-  <p class="gallery-empty" id="galleryEmpty" style="display:none;">Belum ada foto yang ke-upload. Yuk mulai tambahin dokumentasi kegiatan kamu!</p>
-</section>
-
-<!-- lightbox popup -->
-<div class="lightbox" id="lightbox">
-  <button class="lightbox-close" id="lightboxClose" aria-label="Tutup">✕</button>
-  <img id="lightboxImg" src="" alt="">
-  <p class="lightbox-cap" id="lightboxCap"></p>
-</div>
 
 <div class="line-divider"></div>
 
@@ -1019,35 +1008,41 @@ footer {
 <section id="qr" class="section-block qr-section">
   <p class="section-kicker reveal">📱 Akses Cepat</p>
   <h2 class="reveal">Scan QR Code</h2>
-  <p class="section-lede reveal">Scan buat buka website atau langsung menuju lokasi Bank Sampah RW 6.</p>
+  <p class="section-lede reveal">
+    Scan QR Code di bawah untuk membuka Website Informasi Bank Sampah RW 6
+    atau melihat lokasi Bank Sampah melalui Google Maps.
+  </p>
 
   <div class="qr-pair">
+
+    <!-- QR WEBSITE -->
     <div class="qr-item reveal">
       <div class="qr-frame">
-        <!-- Ganti URL di bawah dengan link website kamu yang sudah dideploy (misal dari Netlify) -->
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://banksampahrw6kadilangu.netlify.app" width="170" alt="QR Code Website Bank Sampah RW 6">
+        <img src="assets/website.png"
+             alt="QR Code Website Bank Sampah RW 6"
+             class="qr-image">
       </div>
       <p class="qr-label">Website Bank Sampah</p>
     </div>
+
+    <!-- QR LOKASI -->
     <div class="qr-item reveal">
       <div class="qr-frame">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://maps.app.goo.gl/TM4vhZ2tk58HCFSt7" width="170" alt="QR Code Lokasi Bank Sampah RW 6">
+        <img src="assets/maps.png"
+             alt="QR Code Lokasi Bank Sampah RW 6"
+             class="qr-image">
       </div>
       <p class="qr-label">Lokasi Bank Sampah</p>
     </div>
+
   </div>
 </section>
 
 <footer>
   <p class="footer-tagline">♻️ Yuk, Kelola Sampah dari Rumah!</p>
   <p class="footer-sub">Sampah Terpilah, Lingkungan Bersih, Manfaat Bertambah.</p>
-  <p>© 2026 Mahasiswa KKN-T IDBU Kadilangu Kelompok 3</p>
+  <p>© 2026 Mahasiswa KKN-T IDBU 1 Kadilangu Kelompok 3</p>
 </footer>
-
-<!-- Ganti nomor di href berikut dengan nomor WhatsApp pengurus RW 6 -->
-<a class="chat-float" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20soal%20Bank%20Sampah%20RW%206" target="_blank" rel="noopener" aria-label="Chat Pengurus via WhatsApp">
-  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3C7 3 3 7 3 12c0 1.6.4 3.1 1.2 4.4L3 21l4.7-1.2A9 9 0 1 0 12 3z" stroke="white" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 9.5c0 3.5 2.5 6 6 6" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg>
-</a>
 
 <script>
 // Toggle menu mobile
